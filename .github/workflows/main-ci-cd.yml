@@ -149,8 +149,8 @@ jobs:
           context: .
           push: true
           tags: |
-            ${{ secrets.DOCKER_USERNAME }}/kudos-app-26thDec:latest
-            ${{ secrets.DOCKER_USERNAME }}/kudos-app-26thDec:${{ github.sha }}
+            ${{ secrets.DOCKER_USERNAME }}/kudos-app-26thdec:latest
+            ${{ secrets.DOCKER_USERNAME }}/kudos-app-26thdec:${{ github.sha }}
 # # ------------------------------------------------
 #   # 7. Deploy to AWS EC2 (Continuous Deployment)
 #   # ------------------------------------------------
@@ -168,14 +168,14 @@ jobs:
 #           key: ${{ secrets.EC2_SSH_KEY }}
 #           script: |
 #             echo "Pulling latest image..."
-#             docker pull ${{ secrets.DOCKER_USERNAME }}/kudos-app-26thDec:latest
+#             docker pull ${{ secrets.DOCKER_USERNAME }}/kudos-app-26thdec:latest
 
 #             echo "Stopping old container..."
-#             docker stop kudos-app-26thDec || true
-#             docker rm kudos-app-26thDec || true
+#             docker stop kudos-app-26thdec || true
+#             docker rm kudos-app-26thdec || true
 
 #             echo "Starting new container..."
 #             docker run -d \
-#               --name kudos-app-26thDec \
+#               --name kudos-app-26thdec \
 #               -p 80:80 \
-#               ${{ secrets.DOCKER_USERNAME }}/kudos-app-26thDec:latest
+#               ${{ secrets.DOCKER_USERNAME }}/kudos-app-26thdec:latest
