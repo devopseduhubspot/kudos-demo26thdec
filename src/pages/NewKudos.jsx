@@ -8,7 +8,7 @@ function NewKudos() {
   const [errors, setErrors] = useState({});
   const validateForm = () => {
     const newErrors = {};
-    if (!recipientName.trim()) newErrors.recipientName = 'Please enter a recipient name.';
+    if (!recipientName.trim()) newErrors.recipientName = 'Please Enter a recipient name.';
     if (message.trim().length < 10) newErrors.message = 'Message must be at least 10 characters long.';
     return newErrors;
   };
