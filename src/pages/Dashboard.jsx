@@ -14,7 +14,7 @@ function Dashboard() {
   return (
     <div className="container mx-auto px-6 py-10">
       <header className="mb-10 flex justify-between items-center">
-        <h1 className="text-5xl font-extrabold text-indigo-900">Kudos Board</h1>
+        <h1 className="text-5xl font-extrabold text-indigo-900">Kudos Cards</h1>
         <Link
           to="/new"
           className="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-8 rounded-full shadow-lg transform hover:scale-105 transition-all"
