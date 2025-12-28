@@ -151,31 +151,31 @@ jobs:
           tags: |
             ${{ secrets.DOCKER_USERNAME }}/kudos-app-26thdec:latest
             ${{ secrets.DOCKER_USERNAME }}/kudos-app-26thdec:${{ github.sha }}
-# # ------------------------------------------------
-#   # 7. Deploy to AWS EC2 (Continuous Deployment)
-#   # ------------------------------------------------
-#   deploy-ec2:
-#     name: "🚀 Deploy to AWS EC2"
-#     runs-on: ubuntu-latest
-#     needs: docker
+# ------------------------------------------------
+  # 7. Deploy to AWS EC2 (Continuous Deployment)
+  # ------------------------------------------------
+  deploy-ec2:
+    name: "🚀 Deploy to AWS EC2"
+    runs-on: ubuntu-latest
+    needs: docker
 
-#     steps:
-#       - name: "🚀 Deploy application on EC2"
-#         uses: appleboy/ssh-action@v1
-#         with:
-#           host: ${{ secrets.EC2_HOST }}
-#           username: ${{ secrets.EC2_USER }}
-#           key: ${{ secrets.EC2_SSH_KEY }}
-#           script: |
-#             echo "Pulling latest image..."
-#             docker pull ${{ secrets.DOCKER_USERNAME }}/kudos-app-26thdec:latest
+    steps:
+      - name: "🚀 Deploy application on EC2"
+        uses: appleboy/ssh-action@v1
+        with:
+          host: ${{ secrets.EC2_HOST }}
+          username: ${{ secrets.EC2_USER }}
+          key: ${{ secrets.EC2_SSH_KEY }}
+          script: |
+            echo "Pulling latest image..."
+            docker pull ${{ secrets.DOCKER_USERNAME }}/kudos-app-26thdec:latest
 
-#             echo "Stopping old container..."
-#             docker stop kudos-app-26thdec || true
-#             docker rm kudos-app-26thdec || true
+            echo "Stopping old container..."
+            docker stop kudos-app-26thdec || true
+            docker rm kudos-app-26thdec || true
 
-#             echo "Starting new container..."
-#             docker run -d \
-#               --name kudos-app-26thdec \
-#               -p 80:80 \
-#               ${{ secrets.DOCKER_USERNAME }}/kudos-app-26thdec:latest
+            echo "Starting new container..."
+            docker run -d \
+              --name kudos-app-26thdec \
+              -p 80:80 \
+              ${{ secrets.DOCKER_USERNAME }}/kudos-app-26thdec:latest
